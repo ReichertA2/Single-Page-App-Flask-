@@ -31,7 +31,6 @@ def pokemon():
             }
             return render_template('pokemon.html.j2', pokemons=pokemon_dict)
         except:
-            # print("you had an error: ")
             error_string = "You had an error"
             return render_template('pokemon.html.j2', error=error_string)
     return render_template('pokemon.html.j2')
