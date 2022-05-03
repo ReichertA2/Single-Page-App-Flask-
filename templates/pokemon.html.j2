@@ -22,6 +22,7 @@ Pokemon
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div> #}
+  <div style="color:red"><small>{{error}}</small></div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
@@ -30,12 +31,12 @@ Pokemon
     <thead>
       <tr>
         <th scope="col">Pokemon</th>
-        <th scope="col">ability_name</th>
-        <th scope="col">base_experience</th>
-        <th scope="col">sprite_url</th>
-        <th scope="col">attack_base_stat</th>
-        <th scope="col">hp_base_stat</th>
-        <th scope="col">defense_base_stat</th>
+        <th scope="col">Ability Name</th>
+        <th scope="col">Base Experience</th>
+        <th scope="col">Sprite Url</th>
+        <th scope="col">Attack Base Stat</th>
+        <th scope="col">Hp Base Stat</th>
+        <th scope="col">Defense Base Stat</th>
       </tr>
     </thead>
     <tbody>
@@ -43,7 +44,7 @@ Pokemon
         <th scope="row">{{pokemons.pokemon}}</th>
         <td>{{pokemons.ability_name}}</td>
         <td>{{pokemons.base_experience}}</td>
-        <td>{{pokemons.sprite_url}}</td>
+        <td><img src="{{pokemons.sprite_url}}"  width= 80px alt = "Pokemon Sprite Image"></td>
         <td>{{pokemons.attack_base_stat}}</td>
         <td>{{pokemons.hp_base_stat}}</td>
         <td>{{pokemons.defense_base_stat}}</td>
