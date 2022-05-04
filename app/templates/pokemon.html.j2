@@ -10,22 +10,27 @@ Pokemon
 
 
 {% block content %}
+<div class="body">
 <h1>Pokemon Properties</h1>
 <form action="{{url_for('pokemon')}}" method="POST">
+  <div class="textbox_button">
   {{form.hidden_tag()}}
-  <div class="mb-3">
-    {{form.name.label(class="form-label")}}
-    {{form.name(class="form-control")}}
+  
+    <div class="mb-3">
+      {{form.name.label(class="form-label")}}
+      {{form.name(class="form-control w-25")}}
 
-    {% for error in form.name.errors %}
-      <small style="color:red"></small>{{error}}</div>
-    {% endfor %}
-  
+      {% for error in form.name.errors %}
+        <small style="color:red"></small>{{error}}</div>
+
+      {% endfor %}
+    
+    </div>
+    <div>
+    {{form.submit(class="btn btn-dark form-control w-25 mb-3")}}
+    </div>
   </div>
-  <div>
-  {{form.submit(class="btn btn-primary")}}
-  </div>
-  
+    
 </form>
 
 {% if pokemons %}
@@ -55,8 +60,6 @@ Pokemon
     </tbody>
   </table>
 {% endif %}
-
-
-
+</div>
 
 {% endblock %}

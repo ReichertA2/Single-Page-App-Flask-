@@ -1,3 +1,43 @@
-h1{
-    color: rgb(124, 14, 91)
+.container{
+    margin: 0px;
 }
+
+.body {
+    min-height: 810px;
+    /* width:100%; */
+    background-image: url(../images/dynamax-battle.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+    
+    /* margin-right: 10px; */
+    padding: 0px;
+    /* width: 100%; */
+    /* /* width: 85%; */
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 10%;
+    margin: 0px auto;  
+     
+    /* color: red; */
+}
+
+
+
+h1{
+    color: white;
+}
+
+.textbox_button{
+    text-align: center;
+}
+
+.form-control.w-25{
+    margin:0px auto;
+}
+
+.form-label{
+    color: white;
+}
+

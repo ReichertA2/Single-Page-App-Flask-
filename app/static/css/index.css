@@ -1,3 +1,35 @@
 h1{
-    color:rgb(216, 52, 129);
+    color: white;
+    
+
+}
+
+h5{
+    color: white;
+    margin-left: 100px;
+}
+
+.container{
+    margin: 0px;
+}
+
+.body {
+    min-height: 710px;
+    /* width:100%; */
+    background-image: url(../images/lAsI3mll.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+    
+    /* margin-right: 10px; */
+    padding: 0px;
+    /* width: 100%; */
+    /* /* width: 85%; */
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 10%;
+    margin: 0px auto;  
+     
+    /* color: red; */
 }
