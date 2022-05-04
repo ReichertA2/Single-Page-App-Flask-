@@ -7,23 +7,20 @@ Pokemon
 {% block content %}
 <h1>Pokemon Properties</h1>
 <form action="/pokemon" method="POST">
+  {{form.hidden_tag()}}
   <div class="mb-3">
-  
-    <label for="pokemon_name" class="form-label">Pokemon Name</label>
-    <input type="text" class="form-control" id="pokemon_name" name="pokemon_name">
+    {{form.name.label(class="form-label")}}
+    {{form.name(class="form-control")}}
     
-    {# <div id="pokemon_nameHelp" class="form-text">pokemon name</div> #}
+    {% for error in form.name.errors %}
+      <small style="color:red"></small>{{error}}</div>
+    {% endfor %}
+  
   </div>
-  {# <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+  <div>
+  {{form.submit(class="btn btn-primary")}}
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div> #}
-  <div style="color:red"><small>{{error}}</small></div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  
 </form>
 
 {% if pokemons %}
