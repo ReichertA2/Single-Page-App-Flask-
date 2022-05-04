@@ -1,15 +1,19 @@
 from flask import Flask, render_template, request
 import requests
+import os
 
 
-
+class Config():
+    SECRET_KEY = os.environ.get("SECRET_KEY")
 
 app=Flask(__name__)
+app.config.from_object(Config)
 
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html.j2')
 
+    
 @app.route('/pokemon', methods=['GET','POST'])
 def pokemon():
     if request.method == 'POST':
