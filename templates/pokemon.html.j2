@@ -6,12 +6,12 @@ Pokemon
 
 {% block content %}
 <h1>Pokemon Properties</h1>
-<form action="/pokemon" method="POST">
+<form action="{{url_for('pokemon')}}" method="POST">
   {{form.hidden_tag()}}
   <div class="mb-3">
     {{form.name.label(class="form-label")}}
     {{form.name(class="form-control")}}
-    
+
     {% for error in form.name.errors %}
       <small style="color:red"></small>{{error}}</div>
     {% endfor %}
