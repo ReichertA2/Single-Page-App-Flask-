@@ -3,14 +3,17 @@ import requests
 from .forms import PokemonForm, LoginForm, RegisterForm
 from app import app
 from .models import User
+from flask_login import current_user, logout_user, login_user, login_required
 
 # ROUTES SECTION
 @app.route('/', methods=['GET'])
+@login_required
 def index():
     return render_template('index.html.j2')
 
 
 @app.route('/pokemon', methods=['GET','POST'])
+@login_required
 def pokemon():
     form = PokemonForm()
     if request.method == 'POST' and form.validate_on_submit:
@@ -40,7 +43,28 @@ def pokemon():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        email = form.email.data.lower()
+        password = form.password.data
+
+        # look up email address that is trying to log in
+        u=User.query.filter_by(email=email).first()
+        if u and u.check_hashed_password(password):
+            login_user(u)
+            flash(f'Welcome to Pokemon World!', 'success')
+            return redirect(url_for('index'))
+        flash(f'Incorrect Email and Password', 'danger')
+        return render_template('login.html.j2', form=form)
     return render_template('login.html.j2', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    if current_user:
+        logout_user()
+        flash(f'You have logged out','warning')
+        return redirect(url_for('login'))
+    
 
 
 @app.route('/register', methods=['GET','POST'])
