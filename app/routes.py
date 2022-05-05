@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, flash
 import requests
 from .forms import PokemonForm, LoginForm
 from app import app
