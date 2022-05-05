@@ -1,6 +1,6 @@
 from flask import render_template, request
 import requests
-from .forms import PokemonForm
+from .forms import PokemonForm, LoginForm
 from app import app
 
 # ROUTES SECTION
@@ -35,6 +35,11 @@ def pokemon():
             error_string = "You had an error"
             return render_template('pokemon.html.j2', error=error_string, form=form)
     return render_template('pokemon.html.j2', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    return render_template('login.html.j2', form=form)
 
 
     
