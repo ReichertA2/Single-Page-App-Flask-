@@ -1,7 +1,8 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, redirect, url_for
 import requests
-from .forms import PokemonForm, LoginForm
+from .forms import PokemonForm, LoginForm, RegisterForm
 from app import app
+from .models import User
 
 # ROUTES SECTION
 @app.route('/', methods=['GET'])
@@ -41,5 +42,31 @@ def login():
     form = LoginForm()
     return render_template('login.html.j2', form=form)
 
+
+@app.route('/register', methods=['GET','POST'])
+def register():
+    form = RegisterForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        try:
+            new_user_data={
+                "first_name": form.first_name.data.title(),
+                "last_name": form.last_name.data.title(),
+                "email": form.email.data.lower(),
+                "password": form.password.data
+            }
+            # Create an empty User
+            new_user_object = User()
+            # build user with the form data
+            new_user_object.from_dict(new_user_data)
+            # save user to the database
+            new_user_object.save()
+        except:
+            flash("There was an an unexpected error creating your account. Please try again later.", "danger")
+            return render_template('register.html.j2', form=form)
+
+        flash('You have successfully registered!', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('register.html.j2', form=form)    
 
     
