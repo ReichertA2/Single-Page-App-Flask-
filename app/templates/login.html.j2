@@ -17,10 +17,16 @@
     <div>
     {{form.email.label(class="form-label")}}
     {{form.email(class="form-control")}}
+    {% for error in form.email.errors %}
+        <small style="color: red;">{{error}}</small>
+    {% endfor %}
     </div>
     <div>
     {{form.password.label(class="form-label")}}
     {{form.password(class="form-control")}}
+    {% for error in form.password.errors %}
+        <small style="color: red;">{{error}}</small>
+    {% endfor %}
     </div>
     <div>
     {{form.submit(class="btn btn-primary form-control")}}
