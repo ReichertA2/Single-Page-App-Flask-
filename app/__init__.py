@@ -6,21 +6,37 @@ from flask_login import LoginManager
 
 
 
-
-# INITALIZING 
-app=Flask(__name__)
-app.config.from_object(Config)
-
-# Register Plug-ins
-login = LoginManager(app)
+# Init Plug-ins
+login = LoginManager()
 
 # init my Database Manager
-db = SQLAlchemy(app)
-migrate = Migrate(app,db)
+db = SQLAlchemy()
+migrate = Migrate()
 
-# Configure some settings
-login.login_view='login'
-login.login_message = 'Please log in'
-login.login_message_category = 'warning'
 
-from app import routes, models
+def create_app(config_class=Config):
+
+    # Init the app
+    app=Flask(__name__)
+    # Link in the Config
+    app.config.from_object(config_class)
+    
+    # Register Plug-in
+    login.init_app(app)
+    db.init_app(app)
+    migrate.init_app(app, db)
+
+
+    
+    # Configure some settings
+    login.login_view='auth.login'
+    login.login_message = 'Please log in'
+    login.login_message_category = 'warning'
+
+    from .blueprints.main import bp as main_bp
+    app.register_blueprint(main_bp)
+
+    from .blueprints.auth import bp as auth_bp
+    app.register_blueprint(auth_bp)
+    
+    return app

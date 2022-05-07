@@ -1,46 +1,12 @@
 from flask import render_template, request, flash, redirect, url_for
-import requests
-from .forms import PokemonForm, LoginForm, RegisterForm, EditProfileForm
-from app import app
-from .models import User
+from ...forms import LoginForm, RegisterForm, EditProfileForm
+from .import bp as auth
+from ...models import User
 from flask_login import current_user, logout_user, login_user, login_required
 
-# ROUTES SECTION
-@app.route('/', methods=['GET'])
-@login_required
-def index():
-    return render_template('index.html.j2')
 
 
-@app.route('/pokemon', methods=['GET','POST'])
-@login_required
-def pokemon():
-    form = PokemonForm()
-    if request.method == 'POST' and form.validate_on_submit:
-        # poke_name = request.form.get('pokemon_name')
-        poke_name = form.name.data
-        try:
-            
-            url = f'https://pokeapi.co/api/v2/pokemon/{poke_name}'
-            response = requests.get(url)
-            pokemon = response.json()
-            
-            pokemon_dict={
-                "pokemon":pokemon['name'],
-                "ability_name":pokemon['abilities'][0]['ability']['name'],
-                "base_experience":pokemon['base_experience'],
-                "sprite_url":pokemon['sprites']['front_shiny'],
-                "attack_base_stat":pokemon['stats'][1]['base_stat'],
-                "hp_base_stat":pokemon['stats'][0]['base_stat'],
-                "defense_base_stat":pokemon['stats'][2]['base_stat']
-            }
-            return render_template('pokemon.html.j2', pokemons=pokemon_dict, form=form)
-        except:
-            error_string = "You had an error"
-            return render_template('pokemon.html.j2', error=error_string, form=form)
-    return render_template('pokemon.html.j2', form=form)
-
-@app.route('/login', methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -52,20 +18,20 @@ def login():
         if u and u.check_hashed_password(password):
             login_user(u)
             flash(f'Welcome to Pokemon World!', 'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('main.index'))
         flash(f'Incorrect Email and Password', 'danger')
         return render_template('login.html.j2', form=form)
     return render_template('login.html.j2', form=form)
 
-@app.route('/logout')
+@auth.route('/logout')
 @login_required
 def logout():
     if current_user:
         logout_user()
         flash(f'You have logged out','warning')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     
-@app.route('/edit_profile', methods=['GET', 'POST'])
+@auth.route('/edit_profile', methods=['GET', 'POST'])
 def edit_profile():
     form = EditProfileForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -79,19 +45,19 @@ def edit_profile():
         user = User.query.filter_by(email=new_user_data["email"]).first()
         if user and user.email != current_user.email:
             flash('Email is already in use', 'danger')
-            return redirect(url_for('edit_profile'))
+            return redirect(url_for('auth.edit_profile'))
         try:
             current_user.from_dict(new_user_data)
             current_user.save()
             flash('Profile Updated', 'success')
         except:
             flash('There was an unexpected error. Please try again.','danger')
-            return redirect(url_for('edit_profile'))
-        return redirect(url_for('index'))
+            return redirect(url_for('auth.edit_profile'))
+        return redirect(url_for('main.index'))
     return render_template('register.html.j2', form=form)
 
 
-@app.route('/register', methods=['GET','POST'])
+@auth.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -114,7 +80,7 @@ def register():
             return render_template('register.html.j2', form=form)
 
         flash('You have successfully registered!', 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
     return render_template('register.html.j2', form=form)    
 
