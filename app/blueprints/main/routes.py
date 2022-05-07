@@ -14,6 +14,8 @@ def index():
     return render_template('index.html.j2')
 
 
+
+
 @main.route('/pokemon', methods=['GET','POST'])
 @login_required
 def pokemon():
@@ -36,6 +38,7 @@ def pokemon():
                 "hp_base_stat":pokemon['stats'][0]['base_stat'],
                 "defense_base_stat":pokemon['stats'][2]['base_stat']
             }
+           
             return render_template('pokemon.html.j2', pokemons=pokemon_dict, form=form)
         except:
             error_string = "You had an error"

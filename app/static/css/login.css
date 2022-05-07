@@ -1,0 +1,60 @@
+.container{
+    margin: 0px;
+}
+
+.body{
+    /* color: white; */
+    margin: 0px;
+    padding: 20px;
+    margin-right: 0px;
+    margin-left: 10px;
+    font-family: cursive;
+  
+    
+    min-height: 600px;
+    width: 115%;
+    background: #060606;
+    background-image:url("../images/set_pokemon.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* width: 3000px; */
+}
+
+h1{
+    color: white;
+}
+
+.textbox_button{ 
+    text-align: center;
+} 
+
+.form-control.w-25{
+    margin:0px auto;
+}
+
+.form-label{
+    color: white;
+}
+
+.glow_effect{
+    color: white;
+   
+    font-family: cursive;
+    font-size: 50px;
+
+    animation: glow 1s ease-in-out infinite alternate;
+    
+
+}
+
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00cbe6, 0 0 40px #0077e6, 0 0 50px #00b8e6, 0 0 60px #0092e6, 0 0 70px #00c4e6;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #4de4ff, 0 0 40px #4dcdff, 0 0 50px #4dafff, 0 0 60px #4dc7ff, 0 0 70px #4dafff, 0 0 80px #4dbeff;
+    }
+  }
+
+
