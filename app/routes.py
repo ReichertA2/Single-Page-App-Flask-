@@ -1,6 +1,6 @@
 from flask import render_template, request, flash, redirect, url_for
 import requests
-from .forms import PokemonForm, LoginForm, RegisterForm
+from .forms import PokemonForm, LoginForm, RegisterForm, EditProfileForm
 from app import app
 from .models import User
 from flask_login import current_user, logout_user, login_user, login_required
@@ -65,6 +65,30 @@ def logout():
         flash(f'You have logged out','warning')
         return redirect(url_for('login'))
     
+@app.route('/edit_profile', methods=['GET', 'POST'])
+def edit_profile():
+    form = EditProfileForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        new_user_data={
+                "first_name": form.first_name.data.title(),
+                "last_name": form.last_name.data.title(),
+                "email": form.email.data.lower(),
+                "password": form.password.data,
+                "icon": int(form.icon.data) if int(form.icon.data) != 9000 else current_user.icon
+            }
+        user = User.query.filter_by(email=new_user_data["email"]).first()
+        if user and user.email != current_user.email:
+            flash('Email is already in use', 'danger')
+            return redirect(url_for('edit_profile'))
+        try:
+            current_user.from_dict(new_user_data)
+            current_user.save()
+            flash('Profile Updated', 'success')
+        except:
+            flash('There was an unexpected error. Please try again.','danger')
+            return redirect(url_for('edit_profile'))
+        return redirect(url_for('index'))
+    return render_template('register.html.j2', form=form)
 
 
 @app.route('/register', methods=['GET','POST'])
@@ -76,7 +100,8 @@ def register():
                 "first_name": form.first_name.data.title(),
                 "last_name": form.last_name.data.title(),
                 "email": form.email.data.lower(),
-                "password": form.password.data
+                "password": form.password.data,
+                "icon": form.icon.data
             }
             # Create an empty User
             new_user_object = User()
