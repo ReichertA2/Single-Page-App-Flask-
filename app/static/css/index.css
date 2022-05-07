@@ -1,35 +1,47 @@
 h1{
-    color: white;
+    color: black;
     
 
 }
 
 h5{
-    color: white;
+    color: black;
     margin-left: 100px;
+}
+
+.body{
+    margin: 0px;
+    padding: 0px;
+    margin-right: 0px;
+    margin-left: 10px;
+    background-color: rgb(30, 30, 43);
+    min-height: 600px;
+    width: 115%;
+    /* width: 3000px; */
 }
 
 .container{
     margin: 0px;
-}
+    width: 100%;
+    padding: 0px;
 
-.body {
-    min-height: 710px;
-    /* width:100%; */
+
+}
+/* .body {
+  
     background-image: url(../images/lAsI3mll.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0px;
     
-    /* margin-right: 10px; */
+
     padding: 0px;
-    /* width: 100%; */
-    /* /* width: 85%; */
+ 
     padding-top: 3%;
     padding-bottom: 3%;
     padding-left: 5%;
     padding-right: 10%;
     margin: 0px auto;  
      
-    /* color: red; */
-}
+    color: red; 
+} */
