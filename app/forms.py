@@ -43,7 +43,7 @@ class RegisterForm(FlaskForm):
             raise ValidationError('Email is Already in Use')
 
 class PokemonForm(FlaskForm):
-    name = StringField('Pokeman Name', validators=[DataRequired()])
+    name = StringField('Search by Pokeman Name', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class EditProfileForm(FlaskForm):

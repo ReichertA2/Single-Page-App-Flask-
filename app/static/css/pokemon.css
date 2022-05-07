@@ -2,25 +2,19 @@
     margin: 0px;
 }
 
-.body {
-    min-height: 810px;
-    /* width:100%; */
-    background-image: url(../images/dynamax-battle.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+.body{
+    /* color: white; */
     margin: 0px;
+    padding: 20px;
+    margin-right: 0px;
+    margin-left: 10px;
+    font-family: cursive;
+  
     
-    /* margin-right: 10px; */
-    padding: 0px;
-    /* width: 100%; */
-    /* /* width: 85%; */
-    padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 5%;
-    padding-right: 10%;
-    margin: 0px auto;  
-     
-    /* color: red; */
+    min-height: 600px;
+    width: 115%;
+    background: #060606;
+    /* width: 3000px; */
 }
 
 
@@ -41,3 +35,62 @@ h1{
     color: white;
 }
 
+.glow_effect{
+    color: white;
+   
+    font-family: cursive;
+    font-size: 50px;
+
+    animation: glow 1s ease-in-out infinite alternate;
+    
+
+}
+
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00cbe6, 0 0 40px #0077e6, 0 0 50px #00b8e6, 0 0 60px #0092e6, 0 0 70px #00c4e6;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #4de4ff, 0 0 40px #4dcdff, 0 0 50px #4dafff, 0 0 60px #4dc7ff, 0 0 70px #4dafff, 0 0 80px #4dbeff;
+    }
+  }
+
+
+.card{
+
+    border-style: solid;
+    /* border-width: 40px; */
+    font-family: cursive;
+    background-color: white;
+    border: solid 5px rgb(255, 255, 255);
+    box-shadow:
+    inset 60px 0 120px #f0f,  
+    inset -60px 0 120px #0ff;
+    border-color: rgb(212, 232, 238);
+
+}
+
+
+h4{
+    font-weight: bold;
+}
+
+img.card-img-top{
+    background-color:black;
+    /* width: 250px; */
+    margin-right: 500px;
+    padding-left: 0px;
+    margin-left:0px;
+    height: 200px;
+   
+}
+
+.for_image{
+    background-color:black;
+}
+
+/* table table-borderless{
+    padding: 0px;
+    margin-right: 350px;
+} */

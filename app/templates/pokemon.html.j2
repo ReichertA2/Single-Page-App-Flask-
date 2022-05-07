@@ -11,7 +11,7 @@ Pokemon
 
 {% block content %}
 <div class="body">
-<h1>Pokemon Properties</h1>
+<h1 class = "glow_effect">CHOOSE WISELY</h1>
 <form action="{{url_for('main.pokemon')}}" method="POST">
   <div class="textbox_button">
   {{form.hidden_tag()}}
@@ -34,8 +34,71 @@ Pokemon
 </form>
 
 {% if pokemons %}
-  <table class="table table-striped table-hover table-dark">
-  
+
+{# {<div class="card" style="width: 18rem;">
+  <img src="{{pokemons.sprite_url}}"  class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{pokemons.pokemon}}</h5>
+  </div>
+  <ul class="list-group list-group-flush border-0">
+    <li class="list-group-item border-0 text-right">Ability &nbsp {{pokemons.ability_name}}</li>
+    <li class="list-group-item border-0 text-right">Base Experience &nbsp {{pokemons.base_experience}}</li>
+    <li class="list-group-item border-0">Attack Base Stat &nbsp {{pokemons.attack_base_stat}}</li>
+    <li class="list-group-item border-0">Hp Base Stat &nbsp {{pokemons.hp_base_stat}}</li>
+    <li class="list-group-item">Defense Base Stat &nbsp {{pokemons.defense_base_stat}}</li>
+  </ul>
+
+  <div class="card-body">
+    <a href="#" class="card-link">Delete</a>
+   
+  </div>
+</div> }  #}
+
+<div class="card" style="width: 20rem;">
+  <div class="for_image">
+    <img src="{{pokemons.sprite_url}}"  class="card-img-top" alt="...">
+  </div>
+  <div class="card-body">
+    <h4 class="card-title text-center">{{pokemons.pokemon}}</h5>
+  </div>
+  <table class="table table-borderless " style="text-align: right; width: 75%; margin:0px auto;" >
+      <tbody>
+      <tr>
+        <td scope="col">Ability Name</th>
+        <td>{{pokemons.ability_name}}</td>
+      </tr>
+      <tr>
+        <td scope="col">Base Experience</th>
+        <td>{{pokemons.base_experience}}</td>
+      </tr>
+      <tr>
+        <td scope="col">Attack Base Stat</th>
+        <td>{{pokemons.attack_base_stat}}</td>
+      </tr>
+      <tr>
+        <td scope="col">Hp Base Stat</th>
+        <td>{{pokemons.hp_base_stat}}</td>
+      </tr>
+      <tr>
+        <td scope="col">Defense Base Stat</th>
+        <td>{{pokemons.defense_base_stat}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card-body">
+    <a href="#" class="card-link">Delete</a>
+    {# <a href="#" class="card-link">Another link</a> #}
+  </div>
+</div>
+
+
+
+
+
+
+  {# <table class="table table-striped table-hover table-dark">
+   <ul class="list-group list-group-flush border-0">
     <thead>
       <tr>
         <th scope="col">Pokemon</th>
@@ -58,7 +121,7 @@ Pokemon
         <td>{{pokemons.defense_base_stat}}</td>
       </tr>
     </tbody>
-  </table>
+  </table> #}
 {% endif %}
 </div>
 
