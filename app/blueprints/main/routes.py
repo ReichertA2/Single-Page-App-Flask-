@@ -49,14 +49,29 @@ def pokemon():
         new_pokedex.poke_id = new_pokemon.poke_id
         my_pokemon = Pokedex.query.filter_by(user_id = current_user.id).all()
 
+        pokemons=''
         my_names=[]
+        pokemon_list=[]
         for entry in my_pokemon:
             p=Pokemon.query.filter_by(poke_id = entry.poke_id).first().pokemon_name
             my_names.append(p)
+
         if new_pokemon.pokemon_name in my_names:
+
             print('Cannot select same pokemon')
         else:
-            current_user.collect_poke(new_pokemon).all()
+            if len(my_names)  < 5:
+                current_user.collect_poke(new_pokemon)
+            else:
+                print('You already have 5 pokemon')
+        pokemons = current_user.pokemon.all()
+        pokemon_list=pokemons[:5]
+        #     print(pokemon_list)
+        # else:
+        #     pokemons = current_user.pokemon.all()
+        #     pokemon_list=pokemons[:5]
+
+        #     print('Already in list')
 
 
         
@@ -66,7 +81,7 @@ def pokemon():
 
 
 
-        return render_template('pokemon.html.j2', pokemons=pokemon_dict, form=form)
+        return render_template('pokemon.html.j2', pokemons=pokemon_list, form=form)
         # except:
         #     error_string = "You had an error"
         #     return render_template('pokemon.html.j2', error=error_string, form=form)
