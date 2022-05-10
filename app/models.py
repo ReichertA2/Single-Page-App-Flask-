@@ -1,4 +1,4 @@
-from sqlalchemy import Integer
+# from sqlalchemy import Integer
 from app import db, login
 from flask_login import UserMixin #IS ONLY USED FOR THE USER MODEL!!!!!!!!
 from datetime import datetime as dt 
@@ -9,8 +9,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class Pokedex(db.Model):
-    poke_id = db.Column(db.Integer, db.ForeignKey('pokemon.poke_id'), primary_key=True)
-    id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    poke_id = db.Column(db.Integer, db.ForeignKey('pokemon.poke_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class User(UserMixin, db.Model):
@@ -21,7 +22,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String)
     created_on = db.Column(db.DateTime, default=dt.utcnow)
     icon = db.Column(db.Integer)
-    pokemen = db.relationship('Pokemon',
+    pokemon = db.relationship('Pokemon',
                     secondary = 'pokedex',
                     backref='users',
                     lazy='dynamic',
@@ -58,7 +59,7 @@ class User(UserMixin, db.Model):
         db.session.commit() #save everything in the session to the db
     
     def collect_poke(self, poke):
-        self.pokemen.append(poke)
+        self.pokemon.append(poke)
         db.session.commit()
 
     def remove_poke(self, poke):
@@ -89,14 +90,14 @@ class Pokemon(db.Model):
     attack_base_stat = db.Column(db.Integer)
     hp_base_stat = db.Column(db.Integer)
     defense_base_stat = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+   
 
     # should return a unique identifying string; should have this when making a string
     def __repr__(self):
         return f'<Pokemon: {self.poke_id} | {self.pokemon_name}>'
 
     def poki_from_dict(self, pokemon_data):
-        self.pokemon_name = pokemon_data['pokemon_name']
+        self.pokemon_name = pokemon_data['pokemon']
         self.ability_name = pokemon_data['ability_name']
         self.base_experience=pokemon_data['base_experience']
         self.sprite_url = pokemon_data['sprite_url']

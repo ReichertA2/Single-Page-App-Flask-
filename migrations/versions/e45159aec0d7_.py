@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 34142d0516b0
+Revision ID: e45159aec0d7
 Revises: 
-Create Date: 2022-05-10 13:03:59.920688
+Create Date: 2022-05-10 15:17:50.835412
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '34142d0516b0'
+revision = 'e45159aec0d7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,16 +27,15 @@ def upgrade():
     sa.Column('attack_base_stat', sa.Integer(), nullable=True),
     sa.Column('hp_base_stat', sa.Integer(), nullable=True),
     sa.Column('defense_base_stat', sa.Integer(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('poke_id')
     )
     op.create_table('pokedex',
-    sa.Column('poke_id', sa.Integer(), nullable=False),
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['id'], ['user.id'], ),
+    sa.Column('poke_id', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['poke_id'], ['pokemon.poke_id'], ),
-    sa.PrimaryKeyConstraint('poke_id', 'id')
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
 
