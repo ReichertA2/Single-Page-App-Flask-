@@ -35,7 +35,7 @@ Pokemon - Team
             <td>
                 {% for p in pokemons[user.id] %}
                     <img src="{{p.sprite_url}}">
-
+                    <h5>{{p.pokemon_name}}</h5>                   
                 {% endfor %}
             </td> 
             {# <td>{{}}</td>  #}
@@ -61,11 +61,10 @@ Pokemon - Team
 
     <div class="card-body">
         {% if current_user.is_authenticated %}
-        <form method="POST" action="{{url_for('main.pokemon_battle')}}">
-        <button type="submit" class="btn btn-primary">Battle</button>
-        </form>
+        <a href="{{url_for('main.pokemon_battle_view', id=user.id)}}" class="btn btn-success">Battle</a>
+      
         {% endif %}
-        {# <a href="#" class="card-link">Another link</a> #}
+        
     </div>
 
     </div>

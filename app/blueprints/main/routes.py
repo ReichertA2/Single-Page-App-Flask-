@@ -94,10 +94,11 @@ def pokemon_battle():
         
 
     # all_pokemons=users.pokemon.all()
-    if request.method == 'POST':
-        users=User.query.filter(User.id == current_user.id).all()    
-        pokemon_hp = Pokemon.hp_base_stat
-        print(pokemon_hp)
+   
+
+
+            
+
        
         # hp_1=pokemon.poke_from_dict.hp_base_stat
         # hp_2=pokemon.poke_from_dict.hp_base_stat
@@ -123,13 +124,57 @@ def pokemon_battle():
         #         current_user.win_count += 1
         #         user.loss_count += 1
 
-        return
+        
         # return redirect(url_for("main.pokemon_battle"))
 
     return render_template('pokemon_battle.html.j2', pokemons=big_list, users=users)
 
 
 
+@main.route('/pokemon_battle_view/<int:id>', methods=['GET','POST'])
+@login_required
+def pokemon_battle_view(id):
+    # print("this sucks")
+    user=User.query.get(id)
+    print("poke battle current_user: ",current_user.id)
+    print("poke battle user: ", user.id)
+    if request.method == 'GET':
+        
+        curr=Pokedex.query
+        print(curr)
+        # u=Pokedex.query.filter(User.id)
+        # print(u, "hi")
+
+    return render_template('pokemon_battle.html.j2')
 
 
+        
+
+#         for user in users:
+#             users=User.query.filter(User.id == current_user.id).all()    
+#             pokemon_hp1 = user.pokemon.first().hp_base_stat
+#             print(pokemon_hp1, "I am stressed")
+#             pokemon_atk1 = user.pokemon.first().attack_base_stat
+#         total_hp_a = sum(pokemon_hp1)
+#         total_atk_a = sum(pokemon_atk1)
+#         for second_user in users1:
+#             users1=User.query.filter(User.id != current_user.id).all() 
+#             pokemon_hp2 = second_user.pokemon.hp_base_stat
+#             pokemon_atk2 = second_user.pokemon.attack_base_stat
+#         total_hp_b = sum(pokemon_hp2)
+#         total_atk_b = sum(pokemon_atk2)
+#         winner=''
+#         while total_hp_a <= 0 or total_hp_b <= 0:
+#             # round
+#             total_hp_a = total_hp_a - total_atk_b
+#             total_hp_b = total_hp_b - total_atk_a
+
+#             # TODO replace user.* with correct annotation
+
+#             if total_hp_a <=0:
+#                 current_user.loss_count += 1
+#                 user.win_count += 1
+#             if total_hp_b <=0:
+#                 current_user.win_count += 1
+#                 user.loss_count += 1
 
