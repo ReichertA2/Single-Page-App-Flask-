@@ -18,48 +18,57 @@ Pokemon - Team
 
 <h3>Battlegrounds</h3>
 
-{% for user in all_users %}
-<div class="card" style="width: 20rem; display: inline-block; width: 19%">
-  <div class="for_image">
-    <img src="{{user.get_icon_url()}}"  class="card-img-top" alt="...">
-    
-  </div>
-  <div class="card-body">
-    <h4 class="card-title text-center">{{user.id}}</h4>
+{% for user in users %}
+    <div class="card" style="width: 20rem; display: inline-block; width: 19%">
+    <div class="for_image">
+        <img src="{{user.get_icon_url()}}"  class="card-img-top" alt="avatar">
+        
+    </div>
+    <div class="card-body">
+        <h4 class="card-title text-center">{{user.first_name}} {{user.last_name}}</h4>
 
-  </div>
-  <table class="table table-borderless " style="text-align: right; width: 75%; margin:0px auto;" >
-      <tbody>
-      <tr>
-        <td scope="col">Pokemon</td>
-        {# <td>{{user}}</td> #}
-        {# <td>{{poke.ability_name}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Base Experience</th>
-        <td>{{poke.base_experience}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Attack Base Stat</th>
-        <td>{{poke.attack_base_stat}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Hp Base Stat</th>
-        <td>{{poke.hp_base_stat}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Defense Base Stat</th>
-        <td>{{poke.defense_base_stat}}</td>
-      </tr> #}
-    </tbody>
-  </table>
+    </div>
+    <table class="table table-borderless " style="text-align: right; width: 75%; margin:0px auto;" >
+        <tbody>
+        <tr>
+            <td scope="col">Pokemon</td>
+            <td>
+                {% for p in pokemons[user.id] %}
+                    <img src="{{p.sprite_url}}">
 
-  <div class="card-body">
-    <a href="#" class="card-link"><button type="submit" class="btn btn-primary">Battle</button></a>
-    {# <a href="#" class="card-link">Another link</a> #}
-  </div>
+                {% endfor %}
+            </td> 
+            {# <td>{{}}</td>  #}
+        </tr>
+        <tr>
+            <td scope="col">Wins:</th>
+            <td>{{user.win_count}}</td> 
+        </tr>
+        <tr>
+            <td scope="col">Losses:</th>
+            <td>{{user.loss_count}}</td> 
+        </tr>
+        {# <tr>
+            <td scope="col">Hp Base Stat</th>
+            <td>{{poke.hp_base_stat}}</td>
+        </tr>
+        <tr>
+            <td scope="col">Defense Base Stat</th>
+            <td>{{poke.defense_base_stat}}</td>
+        </tr>  #}
+        </tbody>
+    </table>
 
-</div>
+    <div class="card-body">
+        {% if current_user.is_authenticated %}
+        <form method="POST" action="{{url_for('main.pokemon_battle')}}">
+        <button type="submit" class="btn btn-primary">Battle</button>
+        </form>
+        {% endif %}
+        {# <a href="#" class="card-link">Another link</a> #}
+    </div>
+
+    </div>
 {% endfor %}
 
 

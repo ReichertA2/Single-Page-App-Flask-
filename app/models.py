@@ -27,6 +27,8 @@ class User(UserMixin, db.Model):
                     backref='users',
                     lazy='dynamic',
                     ) 
+    win_count = db.Column(db.Integer)
+    loss_count = db.Column(db.Integer)
 
     # should return a unique identifying string
     def __repr__(self):
