@@ -5,68 +5,35 @@
 {% endblock %}
 
 {% block title %}
-Pokemon
+Pokemon - Team
 {% endblock %}
 
 
 {% block content %}
-<div class="body">
-<h1 class = "glow_effect">CHOOSE WISELY</h1>
-<form action="{{url_for('main.pokemon')}}" method="POST">
-  <div class="textbox_button">
-  {{form.hidden_tag()}}
-  
-    <div class="mb-3">
-      {{form.name.label(class="form-label")}}
-      {{form.name(class="form-control w-25")}}
 
-      {% for error in form.name.errors %}
-        <small style="color:red"></small>{{error}}</div>
 
-      {% endfor %}
-    
-    </div>
-    <div>
-    {{form.submit(class="btn btn-dark form-control w-25 mb-3")}}
-    </div>
-  </div>
-    
-</form>
+{# {% if pokemons %} #}
 
-{% if pokemons %}
 
-{# {<div class="card" style="width: 18rem;">
-  <img src="{{pokemons.sprite_url}}"  class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{pokemons.pokemon}}</h5>
-  </div>
-  <ul class="list-group list-group-flush border-0">
-    <li class="list-group-item border-0 text-right">Ability &nbsp {{pokemons.ability_name}}</li>
-    <li class="list-group-item border-0 text-right">Base Experience &nbsp {{pokemons.base_experience}}</li>
-    <li class="list-group-item border-0">Attack Base Stat &nbsp {{pokemons.attack_base_stat}}</li>
-    <li class="list-group-item border-0">Hp Base Stat &nbsp {{pokemons.hp_base_stat}}</li>
-    <li class="list-group-item">Defense Base Stat &nbsp {{pokemons.defense_base_stat}}</li>
-  </ul>
 
-  <div class="card-body">
-    <a href="#" class="card-link">Delete</a>
-   
-  </div>
-</div> }  #}
-{% for poke in pokemons %}
+<h3>Battlegrounds</h3>
+
+{% for user in all_users %}
 <div class="card" style="width: 20rem; display: inline-block; width: 19%">
   <div class="for_image">
-    <img src="{{poke.sprite_url}}"  class="card-img-top" alt="...">
+    <img src="{{user.get_icon_url()}}"  class="card-img-top" alt="...">
+    
   </div>
   <div class="card-body">
-    <h4 class="card-title text-center">{{poke.pokemon_name}}</h4>
+    <h4 class="card-title text-center">{{user.id}}</h4>
 
   </div>
   <table class="table table-borderless " style="text-align: right; width: 75%; margin:0px auto;" >
       <tbody>
       <tr>
-        <td scope="col">Ability Name</th>
-        <td>{{poke.ability_name}}</td>
+        <td scope="col">Pokemon</td>
+        {# <td>{{user}}</td> #}
+        {# <td>{{poke.ability_name}}</td>
       </tr>
       <tr>
         <td scope="col">Base Experience</th>
@@ -83,12 +50,12 @@ Pokemon
       <tr>
         <td scope="col">Defense Base Stat</th>
         <td>{{poke.defense_base_stat}}</td>
-      </tr>
+      </tr> #}
     </tbody>
   </table>
 
   <div class="card-body">
-    <a href="#" class="card-link">Delete</a>
+    <a href="#" class="card-link"><button type="submit" class="btn btn-primary">Battle</button></a>
     {# <a href="#" class="card-link">Another link</a> #}
   </div>
 
@@ -125,7 +92,7 @@ Pokemon
       </tr>
     </tbody>
   </table> #}
-{% endif %}
+{# {% endif %} #}
 </div>
 
 {% endblock %}
