@@ -48,10 +48,10 @@ Pokemon - Team
       </tbody>
     </table>
 
-    {# <div class="card-body"> #}
-      {# <a href="{{url_for('main.delete_pokemon', id)}}" class="card-link">Delete</a> #}
-      {# <a href="#" class="card-link">Another link</a> #}
-    {# </div> #}
+    <div class="card-body"> 
+      <a href="{{url_for('main.delete_pokemon', id=poke.poke_id)}}" class="card-link">Delete</a>
+     
+     </div>
 
   </div>
 

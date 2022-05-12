@@ -128,13 +128,13 @@ def pokemon_battle_view(id):
     return render_template('pokemon_battle.html.j2', users=users, pokemons=big_list)
 
 
-# @main.route('/delete_pokemon/<int:id>')
-# @login_required
-# def delete_pokemon(id):       
-#     users = Pokedex.query.filter_by(id=current_user.id).first()
-#     for user in users:
-#         user.remove_poke(current_user.id)
+@main.route('/delete_pokemon/<int:id>')
+@login_required
+def delete_pokemon(id):       
+    p= Pokemon.query.filter_by(poke_id=id).first()
     
-#     return redirect(url_for('main.pokemon'))
+    current_user.remove_poke(p)
+    
+    return redirect(url_for('main.pokemon'))
 
 
