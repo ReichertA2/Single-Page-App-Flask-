@@ -113,9 +113,11 @@ def pokemon_battle_view(id):
         if selection == 1:
             current_user.loss_count += 1
             user.win_count += 1
+            flash(f'You lost!!', 'danger')
         else:
             current_user.win_count += 1
             user.loss_count += 1
+            flash(f'You won!!', 'primary')
         current_user.save()
         user.save()
     users = User.query.all()
