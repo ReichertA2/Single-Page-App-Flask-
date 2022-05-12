@@ -135,6 +135,6 @@ def delete_pokemon(id):
     
     current_user.remove_poke(p)
     
-    return redirect(url_for('main.pokemon'))
+    return redirect(url_for('main.pokemon_team'))
 
 
