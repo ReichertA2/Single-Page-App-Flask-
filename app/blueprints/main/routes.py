@@ -3,6 +3,7 @@ import requests
 from .import bp as main
 from ...forms import PokemonForm
 from app.models import Pokemon, Pokedex, User
+import random
 
 
 from flask_login import login_required, current_user
@@ -93,42 +94,7 @@ def pokemon_battle():
         big_list[user.id]=pokemon_list
         
 
-    # all_pokemons=users.pokemon.all()
-   
-
-
-            
-
-       
-        # hp_1=pokemon.poke_from_dict.hp_base_stat
-        # hp_2=pokemon.poke_from_dict.hp_base_stat
-        # atk_1=pokemon.poke_from_dict.attack_base
-        # atk_2=pokemon.poke_from_dict.attack_base
-        # # hp_a = current user
-        # total_hp_a=sum(hp)
-        # total_hp_b=sum(hp)
-        # total_atk_a=sum(atk)
-        # total_atk_b=sum(atk)
-        # winner=''
-        # while total_hp_a <= 0 or total_hp_b <= 0:
-        #     # round
-        #     total_hp_a = total_hp_a - total_atk_b
-        #     total_hp_b = total_hp_b - total_atk_a
-
-        #     # TODO replace user.* with correct annotation
-
-        #     if total_hp_a <=0:
-        #         current_user.loss_count += 1
-        #         user.win_count += 1
-        #     if total_hp_b <=0:
-        #         current_user.win_count += 1
-        #         user.loss_count += 1
-
-        
-        # return redirect(url_for("main.pokemon_battle"))
-
     return render_template('pokemon_battle.html.j2', pokemons=big_list, users=users)
-
 
 
 @main.route('/pokemon_battle_view/<int:id>', methods=['GET','POST'])
@@ -138,43 +104,29 @@ def pokemon_battle_view(id):
     user=User.query.get(id)
     print("poke battle current_user: ",current_user.id)
     print("poke battle user: ", user.id)
-    if request.method == 'GET':
+    if request.method == "GET":
+        choice = [0,1]
+        selection = random.choice(choice)
+        print("Selection: ", selection)
         
-        curr=Pokedex.query
-        print(curr)
-        # u=Pokedex.query.filter(User.id)
-        # print(u, "hi")
-
-    return render_template('pokemon_battle.html.j2')
+    
+        if selection == 1:
+            current_user.loss_count += 1
+            user.win_count += 1
+        else:
+            current_user.win_count += 1
+            user.loss_count += 1
+        current_user.save()
+        user.save()
+    users = User.query.all()
+    big_list = {}
+    for user in users:
+        pokemons = user.pokemon.all()
+        pokemon_list=pokemons[:5]
+        big_list[user.id]=pokemon_list
+        
+    return render_template('pokemon_battle.html.j2', users=users, pokemons=big_list)
 
 
         
-
-#         for user in users:
-#             users=User.query.filter(User.id == current_user.id).all()    
-#             pokemon_hp1 = user.pokemon.first().hp_base_stat
-#             print(pokemon_hp1, "I am stressed")
-#             pokemon_atk1 = user.pokemon.first().attack_base_stat
-#         total_hp_a = sum(pokemon_hp1)
-#         total_atk_a = sum(pokemon_atk1)
-#         for second_user in users1:
-#             users1=User.query.filter(User.id != current_user.id).all() 
-#             pokemon_hp2 = second_user.pokemon.hp_base_stat
-#             pokemon_atk2 = second_user.pokemon.attack_base_stat
-#         total_hp_b = sum(pokemon_hp2)
-#         total_atk_b = sum(pokemon_atk2)
-#         winner=''
-#         while total_hp_a <= 0 or total_hp_b <= 0:
-#             # round
-#             total_hp_a = total_hp_a - total_atk_b
-#             total_hp_b = total_hp_b - total_atk_a
-
-#             # TODO replace user.* with correct annotation
-
-#             if total_hp_a <=0:
-#                 current_user.loss_count += 1
-#                 user.win_count += 1
-#             if total_hp_b <=0:
-#                 current_user.win_count += 1
-#                 user.loss_count += 1
-
+ 
