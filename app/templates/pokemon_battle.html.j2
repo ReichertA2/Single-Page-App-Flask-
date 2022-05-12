@@ -1,7 +1,7 @@
 {% extends 'base.html.j2'%}
 
 {% block css %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/pokemon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/pokemon_battle.css')}}">
 {% endblock %}
 
 {% block title %}
@@ -15,8 +15,8 @@ Pokemon - Team
 {# {% if pokemons %} #}
 
 
-
-<h3>Battlegrounds</h3>
+<div class="body">
+<h1 class="glow_effect">Battlegrounds</h1>
 
 {% for user in users %}
     <div class="card" style="width: 20rem; display: inline-block; width: 19%">
@@ -31,7 +31,7 @@ Pokemon - Team
     <table class="table table-borderless " style="text-align: right; width: 75%; margin:0px auto;" >
         <tbody>
         <tr>
-            <td scope="col">Pokemon</td>
+            
             <td>
                 {% for p in pokemons[user.id] %}
                     <img src="{{p.sprite_url}}">
@@ -61,7 +61,7 @@ Pokemon - Team
 
     <div class="card-body">
         {% if current_user.is_authenticated %}
-        <a href="{{url_for('main.pokemon_battle_view', id=user.id)}}" class="btn btn-success">Battle</a>
+        <a href="{{url_for('main.pokemon_battle_view', id=user.id)}}" class="btn btn-dark btn btn-success">Battle</a>
       
         {% endif %}
         
@@ -71,36 +71,6 @@ Pokemon - Team
 {% endfor %}
 
 
-
-
-
-
-  {# <table class="table table-striped table-hover table-dark">
-   <ul class="list-group list-group-flush border-0">
-    <thead>
-      <tr>
-        <th scope="col">Pokemon</th>
-        <th scope="col">Ability Name</th>
-        <th scope="col">Base Experience</th>
-        <th scope="col">Sprite Url</th>
-        <th scope="col">Attack Base Stat</th>
-        <th scope="col">Hp Base Stat</th>
-        <th scope="col">Defense Base Stat</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{pokemons.pokemon}}</th>
-        <td>{{pokemons.ability_name}}</td>
-        <td>{{pokemons.base_experience}}</td>
-        <td><img src="{{pokemons.sprite_url}}"  width= 80px alt = "Pokemon Sprite Image"></td>
-        <td>{{pokemons.attack_base_stat}}</td>
-        <td>{{pokemons.hp_base_stat}}</td>
-        <td>{{pokemons.defense_base_stat}}</td>
-      </tr>
-    </tbody>
-  </table> #}
-{# {% endif %} #}
 </div>
 
 {% endblock %}

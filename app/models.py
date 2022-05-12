@@ -65,7 +65,7 @@ class User(UserMixin, db.Model):
         db.session.commit()
 
     def remove_poke(self, poke):
-        self.pokemen.remove(poke)
+        self.pokemon.remove(poke)
         db.session.commit()
 
     #check if user already collected pokemons 

@@ -1,7 +1,7 @@
 {% extends 'base.html.j2'%}
 
 {% block css %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/pokemon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/pokemon_team.css')}}">
 {% endblock %}
 
 {% block title %}
@@ -10,86 +10,62 @@ Pokemon - Team
 
 
 {% block content %}
+<div class="body">
+<h1 class="glow_effect">Here is your team</h1>
 
-
-{# {% if pokemons %} #}
-
-
-
-<h3>Here is your team</h3>
 {% for poke in pokemons %}
-<div class="card" style="width: 20rem; display: inline-block; width: 19%">
-  <div class="for_image">
-    <img src="{{poke.sprite_url}}"  class="card-img-top" alt="...">
-  </div>
-  <div class="card-body">
-    <h4 class="card-title text-center">{{poke.pokemon_name}}</h4>
+
+  <div class="card h-100" style="width: 20rem; display: inline-block; width: 19%">
+    <div class="for_image">
+      <img src="{{poke.sprite_url}}"  class="card-img-top" alt="...">
+    </div>
+    <div class="card-body">
+      <h4 class="card-title text-center">{{poke.pokemon_name}}</h4>
+
+    </div>
+    <table class="table table-borderless " style="text-align: right; width: 75%; margin:0px auto;" >
+        <tbody>
+        <tr>
+          <td scope="col">Ability Name</th>
+          <td>{{poke.ability_name}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Base Experience</th>
+          <td>{{poke.base_experience}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Attack Base Stat</th>
+          <td>{{poke.attack_base_stat}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Hp Base Stat</th>
+          <td>{{poke.hp_base_stat}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Defense Base Stat</th>
+          <td>{{poke.defense_base_stat}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {# <div class="card-body"> #}
+      {# <a href="{{url_for('main.delete_pokemon', id)}}" class="card-link">Delete</a> #}
+      {# <a href="#" class="card-link">Another link</a> #}
+    {# </div> #}
 
   </div>
-  <table class="table table-borderless " style="text-align: right; width: 75%; margin:0px auto;" >
-      <tbody>
-      <tr>
-        <td scope="col">Ability Name</th>
-        <td>{{poke.ability_name}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Base Experience</th>
-        <td>{{poke.base_experience}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Attack Base Stat</th>
-        <td>{{poke.attack_base_stat}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Hp Base Stat</th>
-        <td>{{poke.hp_base_stat}}</td>
-      </tr>
-      <tr>
-        <td scope="col">Defense Base Stat</th>
-        <td>{{poke.defense_base_stat}}</td>
-      </tr>
-    </tbody>
-  </table>
 
-  <div class="card-body">
-    <a href="#" class="card-link">Delete</a>
-    {# <a href="#" class="card-link">Another link</a> #}
+
+  {% endfor %}
+
+
+
+
+
+
+      
+    </table> 
+
   </div>
-
 </div>
-{% endfor %}
-
-
-
-
-
-
-  {# <table class="table table-striped table-hover table-dark">
-   <ul class="list-group list-group-flush border-0">
-    <thead>
-      <tr>
-        <th scope="col">Pokemon</th>
-        <th scope="col">Ability Name</th>
-        <th scope="col">Base Experience</th>
-        <th scope="col">Sprite Url</th>
-        <th scope="col">Attack Base Stat</th>
-        <th scope="col">Hp Base Stat</th>
-        <th scope="col">Defense Base Stat</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{pokemons.pokemon}}</th>
-        <td>{{pokemons.ability_name}}</td>
-        <td>{{pokemons.base_experience}}</td>
-        <td><img src="{{pokemons.sprite_url}}"  width= 80px alt = "Pokemon Sprite Image"></td>
-        <td>{{pokemons.attack_base_stat}}</td>
-        <td>{{pokemons.hp_base_stat}}</td>
-        <td>{{pokemons.defense_base_stat}}</td>
-      </tr>
-    </tbody>
-  </table> #}
-{# {% endif %} #}
-</div>
-
 {% endblock %}
