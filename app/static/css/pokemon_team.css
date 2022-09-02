@@ -9,11 +9,12 @@
     margin-right: 0px;
     margin-left: 10px;
     font-family: cursive;
-  
+    width:120em;
+    height:64em;
     
-    min-height: 600px;
-    width: 115%;
-    background: #060606;
+    /* min-height: 600px; */
+    
+    background-color: #060606;
     /* width: 3000px; */
 }
 
@@ -68,6 +69,8 @@ h1{
     inset 60px 0 120px #f0f,  
     inset -60px 0 120px #0ff;
     border-color: rgb(212, 232, 238);
+    margin-left:10px;
+    margin-top: 3em;
     
 }
     
@@ -82,7 +85,7 @@ h4{
 img.card-img-top{
     background-color:black;
     /* width: 250px; */
-    margin-right: 500px;
+    /* margin-right: 500px; */
     padding-left: 0px;
     margin-left:0px;
     height: 200px;

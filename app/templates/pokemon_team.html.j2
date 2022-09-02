@@ -15,7 +15,7 @@ Pokemon - Team
 
 {% for poke in pokemons %}
 
-  <div class="card h-100" style="width: 20rem; display: inline-block; width: 19%">
+  <div class="card " style="width: 20rem; display: inline-block; width: 19%; ">
     <div class="for_image">
       <img src="{{poke.sprite_url}}"  class="card-img-top" alt="...">
     </div>
@@ -49,7 +49,7 @@ Pokemon - Team
     </table>
 
     <div class="card-body"> 
-      <a href="{{url_for('main.delete_pokemon', id=poke.poke_id)}}" class="card-link">Delete</a>
+      <a href="{{url_for('main.delete_pokemon', id=poke.poke_id)}}" class="card-link" style="text-decoration: none">Delete</a>
      
      </div>
 

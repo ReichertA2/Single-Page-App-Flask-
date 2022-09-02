@@ -11,8 +11,8 @@
     font-family: cursive;
   
     
-    min-height: 600px;
-    width: 115%;
+    width:120em;
+    height:64em;
     background: #060606;
     background-image:url("../images/set_pokemon.jpg");
     background-size: cover;

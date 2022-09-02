@@ -1,20 +1,22 @@
 .container{
     margin: 0px;
+    padding:0px;
 }
 
 .body{
     /* color: white; */
-    margin: 0px;
+    /* margin: auto; */
     padding: 20px;
     margin-right: 0px;
     margin-left: 10px;
     font-family: cursive;
-  
+   
     
-    min-height: 600px;
-    width: 115%;
+    min-height: 38em;
+    /* width: 118.3em; */
     background: #060606;
     /* width: 3000px; */
+    width: 145%;
 }
 
 
@@ -68,6 +70,8 @@ h1{
     inset 60px 0 120px #f0f,  
     inset -60px 0 120px #0ff;
     border-color: rgb(212, 232, 238);
+    margin-top: 3em;
+    margin-left:10px;
 
 }
 
