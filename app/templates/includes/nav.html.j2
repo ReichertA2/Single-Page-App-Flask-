@@ -4,7 +4,7 @@
         <div class="row w-100">
             <div class="col-1">
                 <a class="navbar-brand" href=""> 
-                    <img src="{{url_for('static', filename='images/pokemon_madness_label.webp')}}" style="height: 5em"> 
+                    <img src="{{url_for('static', filename='images/pokemon_madness_label.webp')}}" style="height: 5em; filter:grayscale(100%)"> 
                 </a>
             </div>
         {# <button class="navbar-toggler d-inline-block" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,13 +13,13 @@
             <div class="col-9" id="navbarNavAltMarkup" style="color:#feda4a;">
                 
                     {% if current_user.is_authenticated %}
-                    <a class="nav-link  d-inline-block" style="color:#feda4a"  href="{{url_for('main.index')}}">Home</a>
-                    <a class="nav-link  d-inline-block" style="color:#feda4a" href="{{url_for('main.pokemon')}}">Training Grounds</a>
-                    <a class="nav-link  d-inline-block"  style="color:#feda4a" href="{{url_for('main.pokemon_team')}}">Pokemon Team</a>
-                    <a class="nav-link d-inline-block"  style="color:#feda4a" href="{{url_for('main.pokemon_battle')}}">Pokemon Battle</a>
+                    <a class="nav-link  d-inline-block" style="color:#a3a3a3"  href="{{url_for('main.index')}}">Home</a>
+                    <a class="nav-link  d-inline-block" style="color:#a3a3a3" href="{{url_for('main.pokemon')}}">Training Grounds</a>
+                    <a class="nav-link  d-inline-block"  style="color:#a3a3a3" href="{{url_for('main.pokemon_team')}}">Pokemon Team</a>
+                    <a class="nav-link d-inline-block"  style="color:#a3a3a3" href="{{url_for('main.pokemon_battle')}}">Pokemon Battle</a>
                     {% else %}
-                    <a class="nav-link d-inline-block" style="color:#feda4a" href="{{url_for('auth.login')}}">Login</a>
-                    <a class="nav-link d-inline-block" style="color:#feda4a" href="{{url_for('auth.register')}}">Register</a>
+                    <a class="nav-link d-inline-block" style="color:#a3a3a3" href="{{url_for('auth.login')}}">Login</a>
+                    <a class="nav-link d-inline-block" style="color:#a3a3a3" href="{{url_for('auth.register')}}">Register</a>
                     {% endif %}
             </div>
         
@@ -29,14 +29,14 @@
                     <div class="col-8"></div>
                     <div class="col-2 pt-4">
                         <a href="">
-                            <img  class="align-middle" src="{{current_user.get_icon_url()}}" style="height: 40px;color:#feda4a">
+                            <img  class="align-middle" src="{{current_user.get_icon_url()}}" style="height: 40px;color:#a3a3a3">
                         </a>
                     </div>
                     <div class="col-1 align-middle">
-                        <a class="nav-link " style="color:#feda4a" href="{{url_for('auth.edit_profile')}}"><i class="bi bi-gear-fill"></i></a>
+                        <a class="nav-link " style="color:#a3a3a3" href="{{url_for('auth.edit_profile')}}"><i class="bi bi-gear-fill"></i></a>
 
 
-                        <a class="nav-link" style="color:#feda4a" href="{{url_for('auth.logout')}}"><i class="bi bi-door-closed"></i></a>
+                        <a class="nav-link" style="color:#a3a3a3" href="{{url_for('auth.logout')}}"><i class="bi bi-door-closed"></i></a>
 
                     </div>
 
