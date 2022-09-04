@@ -1,11 +1,9 @@
-.container{
-    margin: 0px;
-}
+
 
 html, body, .container-fluid {
     height: 100%; 
         width: 100%; 
-        overflow:hidden;
+        /* overflow:hidden; */
         background-color:#000000;
   }
 
