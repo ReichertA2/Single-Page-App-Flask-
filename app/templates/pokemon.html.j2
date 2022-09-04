@@ -12,6 +12,7 @@ Pokemon
 {% block content %}
 <div class="body">
 <h1 class = "glow_effect">CHOOSE WISELY</h1>
+
 <form action="{{url_for('main.pokemon')}}" method="POST">
   <div class="textbox_button">
   {{form.hidden_tag()}}

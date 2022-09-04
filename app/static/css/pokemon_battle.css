@@ -3,6 +3,13 @@
     padding:0px;
 }
 
+html, body, .container-fluid {
+    height: 100%; 
+        width: 100%; 
+        
+        background-color:#000000;
+  }
+
 .body{
     /* color: white; */
     /* margin: auto; */
@@ -10,13 +17,13 @@
     margin-right: 0px;
     margin-left: 10px;
     font-family: cursive;
-   
     
-    min-height: 38em;
+    
+    
     /* width: 118.3em; */
-    background: #060606;
+    background: #000000;
     /* width: 3000px; */
-    width: 145%;
+    
 }
 
 
@@ -50,16 +57,16 @@ h1{
 
 @-webkit-keyframes glow {
     from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00cbe6, 0 0 40px #0077e6, 0 0 50px #00b8e6, 0 0 60px #0092e6, 0 0 70px #00c4e6;
+      text-shadow: 0 0 5px gray, 0 0 5px gray, 0 0 5px #171717, 0 0 5px rgb(254, 0, 0), 0 0 5px rgb(254, 0, 0), 0 0 5px #171717, 0 0 5px rgb(254, 0, 0);
     }
     
     to {
-      text-shadow: 0 0 20px #fff, 0 0 30px #4de4ff, 0 0 40px #4dcdff, 0 0 50px #4dafff, 0 0 60px #4dc7ff, 0 0 70px #4dafff, 0 0 80px #4dbeff;
+      text-shadow: 0 0 5px gray 0 0 5px rgb(254, 0, 0), 0 0 5px #171717, 0 0 5px rgb(254, 0, 0), 0 0 5px #171717, 0 0 10px rgb(254, 0, 0), 0 0 5px #171717;
     }
   }
 
 
-.card{
+  .card{
 
     border-style: solid;
     /* border-width: 40px; */
@@ -67,12 +74,12 @@ h1{
     background-color: white;
     border: solid 5px rgb(255, 255, 255);
     box-shadow:
-    inset 60px 0 120px #f0f,  
-    inset -60px 0 120px #0ff;
+    inset 60px 0 120px rgb(254, 0, 0),  
+    inset -60px 0 120px #171717;
     border-color: rgb(212, 232, 238);
-    margin-top: 3em;
     margin-left:10px;
-
+    margin-top: 3em;
+   
 }
 
 
@@ -87,6 +94,7 @@ img.card-img-top{
     padding-left: 0px;
     margin-left:0px;
     height: 200px;
+    
    
 }
 

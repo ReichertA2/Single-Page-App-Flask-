@@ -46,7 +46,7 @@ h1{
 }
 
 .glow_effect{
-    color: gray;
+    color: white;
    
     font-family: cursive;
     font-size: 50px;
@@ -56,18 +56,17 @@ h1{
 
 }
 
-/* @-webkit-keyframes glow {
+@-webkit-keyframes glow {
     from {
-      text-shadow: 0 0 10px #fff, 0 0 10px #fff, 0 0 30px #FE0000, 0 0 10px #FE0000, 0 0 10px #FE0000, 0 0 10px #FE0000, 0 0 10px #FE0000;
+      text-shadow: 0 0 5px gray, 0 0 5px gray, 0 0 5px #171717, 0 0 5px rgb(254, 0, 0), 0 0 5px rgb(254, 0, 0), 0 0 5px #171717, 0 0 5px rgb(254, 0, 0);
     }
     
     to {
-      text-shadow: 0 0 10px #fff, 0 0 10px #FE0000, 0 0 10px #FE0000, 0 0 10px #FE0000, 0 0 60px #FE0000, 0 0 10px #FE0000, 0 0 10px #FE0000;
+      text-shadow: 0 0 5px gray 0 0 5px rgb(254, 0, 0), 0 0 5px #171717, 0 0 5px rgb(254, 0, 0), 0 0 5px #171717, 0 0 10px rgb(254, 0, 0), 0 0 5px #171717;
     }
-  } */
-
-
-.card{
+  }
+ 
+  .card{
 
     border-style: solid;
     /* border-width: 40px; */
@@ -75,10 +74,12 @@ h1{
     background-color: white;
     border: solid 5px rgb(255, 255, 255);
     box-shadow:
-    inset 60px 0 120px #f0f,  
-    inset -60px 0 120px #0ff;
+    inset 60px 0 120px rgb(254, 0, 0),  
+    inset -60px 0 120px #171717;
     border-color: rgb(212, 232, 238);
-
+    margin-left:10px;
+    margin-top: 3em;
+    
 }
 
 
